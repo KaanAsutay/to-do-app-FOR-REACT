@@ -2,16 +2,19 @@ import { Formik, Field, Form } from 'formik';
 import validationSchema from './validation';
 import { useTodo } from '../../../contexts/TodoContext';
 
+
 function NewTodoForm() {
-  const {setTodos} = useTodo();
+  const { addTodo } = useTodo();
 
   return (
     <Formik
       initialValues = {{
         text: ""
       }}
-      onSubmit={async (values, bag) => {
+      onSubmit={(values, bag) => {
         console.log(values);
+
+        addTodo(values.text)
 
         bag.resetForm();
       }}
