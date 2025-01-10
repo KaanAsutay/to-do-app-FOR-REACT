@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from './NewTodoForm';
+import Form from './NewTodoForm/index';
 
 function Header() {
   return ( <header className="header">

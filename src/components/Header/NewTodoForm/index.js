@@ -1,4 +1,5 @@
 import { Formik, Field, Form } from 'formik';
+import validationSchema from './validation';
 
 function NewTodoForm() {
   return (
@@ -6,10 +7,12 @@ function NewTodoForm() {
       initialValues = {{
         text: ""
       }}
-      onSubmit={async (values) => {
-        await new Promise((r) => setTimeout(r, 500));
-        alert(JSON.stringify(values, null, 2));
+      onSubmit={async (values, bag) => {
+        console.log(values);
+
+        bag.resetForm();
       }}
+      validationSchema = {validationSchema}
     >
       
       <Form>
