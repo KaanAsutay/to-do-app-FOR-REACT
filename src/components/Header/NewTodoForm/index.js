@@ -1,7 +1,10 @@
 import { Formik, Field, Form } from 'formik';
 import validationSchema from './validation';
+import { useTodo } from '../../../contexts/TodoContext';
 
 function NewTodoForm() {
+  const {setTodos} = useTodo();
+
   return (
     <Formik
       initialValues = {{
