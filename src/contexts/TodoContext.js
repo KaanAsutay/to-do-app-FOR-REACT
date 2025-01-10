@@ -23,13 +23,22 @@ export const TodoProvider = ({children}) => {
         item.completed = !item.completed;
 
         setTodos(cloned_todos);
-    }
+    };
+
+    const destroyTodo = (id) => {
+        const cloned_todos = [...todos];
+    
+        const itemIndex = cloned_todos.findIndex(todo => todo.id === id);
+        cloned_todos.splice(itemIndex, 1);
+        setTodos(cloned_todos);
+    };
 
     const values = {
         todos, 
         setTodos,
         addTodo,
-        toggleTodo
+        toggleTodo,
+        destroyTodo
     }
 
     return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>
